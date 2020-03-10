@@ -5,6 +5,14 @@
 
     <p> {{product.formatted.price}} </p>
     <p> {{product.description}} </p>
+
+    <div>
+      <router-link :to="'/products/' + product.id + '/edit'"> 
+        <button>Update Product</button> 
+      </router-link>
+
+      <button v-on:click='destroyProduct()'>Delete Product</button>
+    </div>
   </div>
 </template>
 
@@ -36,6 +44,12 @@
         this.product = response.data;
       });
     },
-    methods: {}
+    methods: {
+      destroyProduct: function() {
+        axios.delete('/api/products/' + this.$route.params.id).then(response => {
+          this.$router.push('/');
+        });
+      }
+    }
   };
 </script>
