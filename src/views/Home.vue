@@ -3,7 +3,7 @@
 
     <h1>All Products</h1>
     <div v-for="product in products">
-      <h3>{{ product.name }}</h3>
+      <h3><router-link :to="'/products/' + product.id"> {{ product.name }} </router-link></h3>
       <img v-bind:src="product.image_url" v-bind:alt="product.name">
 
       <div v-if='currentProduct === product'>

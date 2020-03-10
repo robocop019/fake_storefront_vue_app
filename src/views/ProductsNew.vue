@@ -3,7 +3,7 @@
     <h1>Create New Product</h1>  
 
     <ul>
-      <li v-for="error in errors">
+      <li class='error' v-for="error in errors">
         {{ error }}
       </li>
     </ul>
@@ -33,7 +33,7 @@
 </template>
 
 <style>
-  li {
+  .error {
     color: red;
     list-style: none;
   }
