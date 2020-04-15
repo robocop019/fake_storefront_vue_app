@@ -1,19 +1,29 @@
 <template>
   <div class="products-show">
-    <h2> {{product.name}} </h2>
-    <img :src="product.image_url" :alt="product.name">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h2> {{product.name}} </h2>
+          <img :src="product.images[0].url" :alt="product.name">
+        </div>
 
-    <p> {{product.formatted.price}} </p>
-    <p> {{product.description}} </p>
+        <div class="col-md-5">
+          <p> {{product.formatted.price}} </p>
+          <p> {{product.description}} </p>
 
-    <div>
-      <router-link :to="'/products/' + product.id + '/edit'"> 
-        <button>Update Product</button> 
-      </router-link>
+          <div>
+            <router-link :to="'/products/' + product.id + '/edit'"> 
+              <button>Update Product</button> 
+            </router-link>
 
-      <button v-on:click='destroyProduct()'>Delete Product</button>
-    </div>
-  </div>
+            <button v-on:click='destroyProduct()'>Delete Product</button>
+          </div>
+          
+        </div>
+      </div>
+
+    </div> <!-- end .container -->
+  </div> <!-- end .products-show -->
 </template>
 
 <style>
@@ -31,12 +41,12 @@
                         name: '',
                         price: '',
                         description: '',
-                        image_url: '',
+                        images: [],
                         formatted: {
                                     price: '',
                                     created_at: ''
                                     }
-                        } 
+                        }
       };
     },
     created: function() {
